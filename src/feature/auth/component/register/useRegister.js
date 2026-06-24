@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react"
-import { REGEX, validateRegistrationForm } from "../utils/validators"
-import { DATE_CONSTANTS } from "../utils/constants"
-import { authApi } from "../api/authApi"
+import { REGEX, validateRegistrationForm } from "../../utils/validators"
+import { DATE_CONSTANTS } from "../../utils/constants"
+import { authApi } from "../../api/authApi"
 import { useEffect } from "react"
 
 const useRegister = () => {

@@ -1,7 +1,7 @@
 import Footer from "../../../../common/component/Footer"
-import useRegister from '../../hooks/useRegister.js'
+import useRegister from '../register/useRegister.js'
 import { DATE_CONSTANTS } from "../../utils/constants.js"
-import { MetaLogo, ErrorIcon, SelectChevron } from "../ui/Icon.jsx"
+import { MetaLogo, ErrorIcon, SelectChevron } from "../../../../common/component/Icon.jsx"
 function Registerpage() {
 
     const { formData, errors, status, serverMessage, handleChange, usernameSuggestion, applySuggestion, submitRegistration } = useRegister()
@@ -29,7 +29,6 @@ function Registerpage() {
                         </button>
                         <div className="flex items-center gap-1.5 font-semibold text-[15px]">
                             <MetaLogo />
-                            Meta
                         </div>
                     </div>
 
