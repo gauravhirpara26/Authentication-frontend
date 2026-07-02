@@ -1,7 +1,8 @@
-import Footer from "../../../../common/component/Footer"
-import useRegister from '../register/useRegister.js'
-import { DATE_CONSTANTS } from "../../utils/constants.js"
-import { MetaLogo, ErrorIcon, SelectChevron } from "../../../../common/component/Icon.jsx"
+import Footer from "@/common/component/Footer"
+import useRegister from './useRegister'
+import { DATE_CONSTANTS } from "@/feature/auth/utils/constants"
+import { MetaLogo, ErrorIcon, SelectChevron } from "@/common/component/Icon"
+import { useNavigate } from "react-router-dom"
 function Registerpage() {
 
     const { formData, errors, status, serverMessage, handleChange, usernameSuggestion, applySuggestion, submitRegistration } = useRegister()
@@ -15,6 +16,12 @@ function Registerpage() {
         ? "w-full h-12 bg-transparent border border-[#ED4956] rounded-xl pl-4 pr-10 text-[#ED4956] text-[15px] appearance-none focus:outline-none cursor-pointer"
         : "w-full h-12 bg-transparent border border-[#363636] rounded-xl pl-4 pr-10 text-[#F5F5F5] text-[15px] appearance-none focus:border-gray-500 focus:outline-none transition-colors cursor-pointer px-2";
 
+    const navigate = useNavigate()
+
+    const goToLogin=()=>{
+        navigate('/')
+    }
+
     return (
         <>
             <div className="min-h-screen bg-[#121212] text-[#F5F5F5] font-sans flex flex-col items-center pt-10 pb-6">
@@ -22,7 +29,7 @@ function Registerpage() {
 
                     {/* Header */}
                     <div className="flex items-center mb-6">
-                        <button className="mr-4 text-[#F5F5F5] hover:opacity-70 transition-opacity">
+                        <button className="mr-4 text-[#F5F5F5] hover:opacity-70 transition-opacity cursor-pointer" onClick={goToLogin}>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <polyline points="15 18 9 12 15 6"></polyline>
                             </svg>

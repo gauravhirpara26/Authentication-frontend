@@ -1,12 +1,20 @@
-import ky from 'ky'
-
-const API_URL = 'http://localhost:3000/api/auth'
+import { axiosInstance } from "@/feature/auth/api/axiosInstance"
 
 export const authApi = {
     register: async (payload) => {
-        return await ky.post(`${API_URL}/register`, { json: payload }).json()
+        const res = await axiosInstance.post("auth/register", payload);
+        return res.data;
     },
+
     checkUserName: async (username) => {
-        return await ky.post(`${API_URL}/check-username`,{searchParams:{username}}).json()
+        const res = await axiosInstance.post("auth/check-username", null, {
+            params: { username },
+        });
+        return res.data;
+    },
+    login: async (payload) => {
+        const res = await axiosInstance.post('auth/login', payload)
+        return res.data
     }
-}  
+};
+

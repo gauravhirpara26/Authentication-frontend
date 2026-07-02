@@ -1,8 +1,9 @@
 import { useCallback, useState } from "react"
-import { REGEX, validateRegistrationForm } from "../../utils/validators"
-import { DATE_CONSTANTS } from "../../utils/constants"
-import { authApi } from "../../api/authApi"
+import { REGEX, validateRegistrationForm } from "@/feature/auth/utils/validators"
+import { DATE_CONSTANTS } from "@/feature/auth/utils/constants"
+import { authApi } from "@/feature/auth/api/authApi"
 import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 const useRegister = () => {
     const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const useRegister = () => {
     const [status, setStatus] = useState('idle')
     const [serverMessage, setServerMessage] = useState(null)
     const [usernameSuggestion, setUsernameSuggestion] = useState([])
+    const navigate = useNavigate()
 
     const handleChange = useCallback((e) => {
         const { name, value } = e.target
@@ -87,6 +89,9 @@ const useRegister = () => {
             setStatus('success')
             setErrors({})
             setServerMessage({ type: 'success', text: 'Registration successful' })
+            setTimeout(() => {
+                navigate('/')
+            }, 1500);
         } catch (error) {
             setStatus('error')
             let errorMsg = 'Something went wrong. Please try again.'

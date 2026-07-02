@@ -1,9 +1,17 @@
-import Registerpage from "./feature/auth/component/register/Registerpage"
+import Login from '@/pages/auth/login/Login'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Registerpage from '@/pages/auth/register/Registerpage'
+
 function App() {
 
   return (
     <>
-      <Registerpage />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Registerpage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
