@@ -111,8 +111,7 @@ const Register = () => {
                             value={form.confirmpassword}
                             onChange={handleChange}
                             placeholder="••••••••"
-                            error={formErros.password}
-                        // Passes error message to show red border
+                            error={formErros.confirmpassword}
                         />
 
                         {/* Register Button */}
