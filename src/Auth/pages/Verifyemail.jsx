@@ -1,5 +1,6 @@
 import { HiOutlineMail, HiArrowLeft } from "react-icons/hi";
 import { MdVerified } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Verifyemail = () => {
     return (
@@ -99,13 +100,13 @@ const Verifyemail = () => {
                     {/* Back */}
                     <div className="mt-6 text-center">
 
-                        <a
-                            href="/register"
+                        <Link
+                            to="/"
                             className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition hover:text-indigo-600"
                         >
                             <HiArrowLeft />
                             Back to Register
-                        </a>
+                        </Link>
 
                     </div>
 
