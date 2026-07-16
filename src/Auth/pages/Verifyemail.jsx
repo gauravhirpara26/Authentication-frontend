@@ -20,14 +20,11 @@ const Verifyemail = () => {
         }
     }
 
-    const handleKeydown = (element, index) => {
+    const handleKeydown = (e, index) => {
         if (e.key === 'Backspace' && !otp[index] && index > 0) {
             inputRef.current[index - 1].focus()
         }
     }
-
-
-
     return (
         <>
             <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 via-white to-blue-100 px-4 py-8">
