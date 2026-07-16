@@ -4,7 +4,6 @@ import { toast } from 'react-toastify'
 import { registerUser } from "../../Api/AuthApi"
 import Loader from "../../Component/Loader"
 import InputField from "../../Component/InputField"
-import { FcGoogle } from "react-icons/fc"
 
 const Register = () => {
     const navigate = useNavigate()
@@ -134,18 +133,6 @@ const Register = () => {
 
                         <div className="flex-1 border-t border-gray-300"></div>
                     </div>
-
-                    {/* Google OAuth */}
-                    <button
-                        // onClick={handleGoogleSignup}
-                        className="w-full border border-gray-300 rounded-xl py-3 flex items-center justify-center gap-3 hover:bg-gray-50 transition duration-300 cursor-pointer"
-                    >
-                        <FcGoogle size={24} />
-
-                        <span className="font-medium text-gray-700">
-                            Continue with Google
-                        </span>
-                    </button>
 
                     {/* Login Link */}
                     <p className="text-center text-gray-500 mt-3">

@@ -1,8 +1,33 @@
+import { useRef, useState } from "react";
 import { HiOutlineMail, HiArrowLeft } from "react-icons/hi";
 import { MdVerified } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const Verifyemail = () => {
+    const [otp, Setotp] = useState(new Array(6).fill())
+    const inputRef = useRef([])
+
+    const handleChange = (element, index) => {
+        const value = element.value
+        if (isNaN(value)) return
+
+        const newOtp = [...otp]
+        newOtp[index] = value.substring(value.length - 1)
+        Setotp(newOtp)
+
+        if (value && index < 5) {
+            inputRef.current[index + 1].focus()
+        }
+    }
+
+    const handleKeydown = (element, index) => {
+        if (e.key === 'Backspace' && !otp[index] && index > 0) {
+            inputRef.current[index - 1].focus()
+        }
+    }
+
+
+
     return (
         <>
             <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 via-white to-blue-100 px-4 py-8">
@@ -33,42 +58,18 @@ const Verifyemail = () => {
                         {/* OTP Inputs */}
                         <div className="flex justify-between gap-2">
 
-                            <input
-                                type="text"
-                                maxLength={1}
-                                className="h-14 w-12 rounded-xl border border-gray-300 text-center text-2xl font-bold focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            />
-
-                            <input
-                                type="text"
-                                maxLength={1}
-                                className="h-14 w-12 rounded-xl border border-gray-300 text-center text-2xl font-bold focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            />
-
-                            <input
-                                type="text"
-                                maxLength={1}
-                                className="h-14 w-12 rounded-xl border border-gray-300 text-center text-2xl font-bold focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            />
-
-                            <input
-                                type="text"
-                                maxLength={1}
-                                className="h-14 w-12 rounded-xl border border-gray-300 text-center text-2xl font-bold focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            />
-
-                            <input
-                                type="text"
-                                maxLength={1}
-                                className="h-14 w-12 rounded-xl border border-gray-300 text-center text-2xl font-bold focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            />
-
-                            <input
-                                type="text"
-                                maxLength={1}
-                                className="h-14 w-12 rounded-xl border border-gray-300 text-center text-2xl font-bold focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            />
-
+                            {otp.map((digit, index) => (
+                                <input
+                                    type="text"
+                                    key={index}
+                                    value={digit}
+                                    ref={(ref) => (inputRef.current[index] = ref)}
+                                    maxLength={1}
+                                    onChange={(e) => handleChange(e.target, index)}
+                                    onKeyDown={(e) => handleKeydown(e.target, index)}
+                                    className="h-14 w-12 rounded-xl border border-gray-300 text-center text-2xl font-bold focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                />
+                            ))}
                         </div>
 
                         {/* Verify Button */}
