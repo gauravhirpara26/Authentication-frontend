@@ -37,7 +37,7 @@ export const useRegister = () => {
             })
 
             toast.success(responseData.message)
-            navigate('/verify-email')
+            navigate('/verify-email', { state: { email: form.email } })
         } catch (error) {
             const errorMsg = error.response?.data?.message || 'Registeration Failed. Try again'
             toast.error(errorMsg)
