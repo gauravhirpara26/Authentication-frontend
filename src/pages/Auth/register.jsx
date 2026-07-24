@@ -1,59 +1,10 @@
-import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { toast } from 'react-toastify'
-import { registerUser } from "../../Api/AuthApi"
+import { Link } from "react-router-dom"
 import Loader from "../../Component/Loader"
 import InputField from "../../Component/InputField"
+import { useRegister } from "../../hooks/useRegister"
 
 const Register = () => {
-    const navigate = useNavigate()
-
-    const [form, setForm] = useState({ fullName: '', email: '', password: '', confirmpassword: '' })
-    const [loading, setLoading] = useState(false)
-    const [formErros, setFormErrors] = useState({})
-
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value })
-        setFormErrors({ ...formErros, [e.target.name]: '' })
-    }
-
-    const handleSubmit = async (e) => {
-        const errors = {}
-        e.preventDefault()
-
-        // Add validations
-        if (form.password !== form.confirmpassword) errors.confirmpassword = 'Password do not Match'
-        if (!form.fullName.trim()) errors.fullName = 'FullName is required'
-        if (!form.email.trim()) errors.email = 'Email is required'
-        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errors.email = 'Enter Valid Email Format'
-        if (!form.password) errors.password = 'Password is required'
-        else if (form.password.length < 6) errors.password = 'Password must be at least 6 characters'
-        if (!form.confirmpassword.trim()) errors.confirmpassword = 'Confirm password is required'
-
-        if (Object.keys(errors).length > 0) {
-            setFormErrors(errors)
-            return
-        }
-
-        setLoading(true)
-
-        try {
-            const responseData = await registerUser({
-                fullName: form.fullName,
-                email: form.email,
-                password: form.password
-            })
-
-            toast.success(responseData.message)
-            navigate('/verify-email')
-        } catch (error) {
-            const errorMsg = error.response?.data?.message || 'Registeration Failed. Try again'
-            toast.error(errorMsg)
-        }
-        finally {
-            setLoading(false)
-        }
-    }
+    const { loading, handleChange, handleSubmit, form, formErros } = useRegister()
     return (
         <>
             {loading && <Loader />}
