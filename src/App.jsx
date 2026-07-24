@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Register from './Auth/pages/register'
-import Login from './Auth/pages/Login'
-import Forgotpassword from './Auth/pages/Forgotpassword'
-import Verifyotp from './Auth/pages/Verifyotp'
-import Resetpassword from './Auth/pages/Resetpassword'
-import Verifyemail from './Auth/pages/Verifyemail'
+import Register from './pages/Auth/register'
+import Login from './pages/Auth/Login'
+import Forgotpassword from './pages/Auth/Forgotpassword'
+import Verifyotp from './pages/Auth/Verifyotp'
+import Resetpassword from './pages/Auth/Resetpassword'
+import Verifyemail from './pages/Auth/Verifyemail'
 import { ToastContainer } from 'react-toastify';
+
 function App() {
 
   return (
