@@ -28,7 +28,7 @@ const Register = () => {
         else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errors.email = 'Enter Valid Email Format'
         if (!form.password) errors.password = 'Password is required'
         else if (form.password.length < 6) errors.password = 'Password must be at least 6 characters'
-        if(!form.confirmpassword.trim()) errors.confirmpassword = 'Confirm password is required'
+        if (!form.confirmpassword.trim()) errors.confirmpassword = 'Confirm password is required'
 
         if (Object.keys(errors).length > 0) {
             setFormErrors(errors)
